@@ -1,10 +1,9 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import SubscriptionTiers from '@/components/SubscriptionTiers';
-import { ArrowRight, Activity, Heart, Clock, Star } from 'lucide-react';
+import { ArrowRight, Activity, Heart, Clock, Star, Check } from 'lucide-react';
 
 const Index = () => {
   return (
