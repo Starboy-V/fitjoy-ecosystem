@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// FitJourney Custom Colors
+				fitBlue: '#0EA5E9',
+				fitPurple: '#8B5CF6',
+				fitDark: '#1A1F2C',
+				fitLight: '#F1F0FB',
+				fitGray: '#8E9196',
+				fitGreen: '#4ADE80',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +92,16 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-ring': {
+					'0%': { transform: 'scale(0.8)', opacity: '0.8' },
+					'100%': { transform: 'scale(2)', opacity: '0' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-ring': 'pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
 			}
 		}
 	},
