@@ -15,12 +15,15 @@ const tiers = [
       'Limited influencer content (ad-supported)',
       'Basic fitness logging',
       'Community forums access',
+      'Influencer account creation',
     ],
     notIncluded: [
       'AI-powered calorie tracking',
       'Personalized meal plans',
       'Premium influencer content',
       'Custom workout programs',
+      'Content creation tools (Influencer)',
+      'Revenue sharing from followers',
     ],
     buttonText: 'Current Plan',
     buttonVariant: 'outline',
@@ -39,31 +42,36 @@ const tiers = [
       'AI fitness chat assistant',
       'Ad-free experience',
     ],
-    notIncluded: [],
+    notIncluded: [
+      'Influencer content creation tools',
+      'Revenue sharing from followers',
+      'Audience analytics dashboard',
+    ],
     buttonText: 'Upgrade Now',
     buttonVariant: 'default',
     active: false,
     highlight: true,
   },
   {
-    name: 'Influencer',
-    price: '0',
-    yearlyPrice: '30',
-    description: 'For fitness content creators',
+    name: 'Influencer+',
+    price: '30',
+    yearlyPrice: '0',
+    description: 'For serious fitness content creators',
     features: [
-      'Free to become an influencer',
-      '$30/year for unlimited access',
-      'Content creation tools',
+      'All Premium features included',
+      'Advanced content creation tools',
       'Audience analytics dashboard',
       'Revenue sharing from followers',
       'Enhanced profile features',
       'Brand partnership facilitation',
-      'All premium user features included',
+      'Priority support',
+      'Early access to new features',
     ],
     notIncluded: [],
-    buttonText: 'Become an Influencer',
+    buttonText: 'Upgrade to Influencer+',
     buttonVariant: 'outline',
     active: false,
+    yearlyBilling: true,
   },
 ];
 
@@ -91,10 +99,10 @@ const SubscriptionTiers = () => {
               <CardTitle className="text-lg text-starLight">{tier.name}</CardTitle>
               <div className="mt-2">
                 <span className="text-3xl font-bold text-starLight">${tier.price}</span>
-                <span className="text-gray-400 ml-1">/month</span>
+                <span className="text-gray-400 ml-1">{tier.yearlyBilling ? '/year' : '/month'}</span>
                 {tier.yearlyPrice && (
                   <div className="text-sm text-gray-400 mt-1">
-                    or ${tier.yearlyPrice}/year for unlimited access
+                    Create a free influencer account and unlock all features for ${tier.price}/year
                   </div>
                 )}
               </div>

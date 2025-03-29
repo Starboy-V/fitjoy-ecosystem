@@ -69,7 +69,7 @@ const Index = () => {
         </section>
         
         {/* Features Section */}
-        <section className="py-16 px-4 bg-starAccent">
+        <section className="py-16 px-4 bg-gradient-to-b from-starDark to-[#111111]">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-starLight">Why Choose <span className="text-starGold">STARFIT</span>?</h2>
@@ -98,11 +98,59 @@ const Index = () => {
           </div>
         </section>
         
-        {/* Call to Action */}
-        <section className="py-16 px-4 bg-starDark">
+        {/* Influencer Feature */}
+        <section className="py-16 px-4 bg-[#111111]">
           <div className="container mx-auto max-w-6xl">
-            <div className="starfit-gradient rounded-2xl p-8 md:p-12 text-white border border-starGray">
-              <div className="max-w-2xl">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/2">
+                <div className="relative">
+                  <div className="absolute -top-3 -left-3 w-full h-full bg-starGold/20 rounded-2xl"></div>
+                  <img 
+                    src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                    alt="Fitness influencer" 
+                    className="relative z-10 rounded-2xl object-cover w-full h-80 md:h-96"
+                  />
+                </div>
+              </div>
+              <div className="md:w-1/2">
+                <h2 className="text-3xl font-bold mb-4 text-starLight">Become an <span className="text-starGold">Influencer</span></h2>
+                <p className="text-gray-400 mb-4">
+                  Create a free influencer account and share your fitness journey with our community. Upgrade to Influencer+ to unlock premium tools, analytics, and revenue sharing opportunities.
+                </p>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center">
+                    <Check size={20} className="text-starGold mr-2" />
+                    <span className="text-starLight">Free account creation</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check size={20} className="text-starGold mr-2" />
+                    <span className="text-starLight">Basic content posting</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check size={20} className="text-starGold mr-2" />
+                    <span className="text-starLight">Community engagement</span>
+                  </li>
+                </ul>
+                <Button className="bg-starGold text-starDark hover:bg-starGold/90">
+                  Become an Influencer
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Call to Action */}
+        <section className="py-16 px-4 bg-gradient-to-t from-starDark to-[#111111]">
+          <div className="container mx-auto max-w-6xl">
+            <div className="bg-gradient-to-r from-[#1A1A1A] to-[#333333] rounded-2xl p-8 md:p-12 text-white border border-starGray overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
+                <img 
+                  src="/lovable-uploads/1112ded8-c1e7-41ad-931b-965192dffb23.png" 
+                  alt="Starfit Phoenix Logo" 
+                  className="w-full h-full"
+                />
+              </div>
+              <div className="max-w-2xl relative z-10">
                 <h2 className="text-3xl font-bold mb-4">Ready to Start Your <span className="text-starGold">STARFIT</span> Journey?</h2>
                 <p className="text-xl mb-6 text-gray-300">
                   Join thousands of users transforming their fitness habits and earning rewards.
@@ -132,8 +180,8 @@ type FeatureCardProps = {
 
 const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
   return (
-    <div className="bg-starDark p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-starGray">
-      <div className="w-12 h-12 rounded-full bg-starAccent flex items-center justify-center mb-4">
+    <div className="bg-starDark p-6 rounded-xl border border-starGray hover:border-starGold/50 transition-all duration-300 group">
+      <div className="w-12 h-12 rounded-full bg-starAccent flex items-center justify-center mb-4 group-hover:bg-starGold/20 transition-all">
         {icon}
       </div>
       <h3 className="text-xl font-bold mb-2 text-starLight">{title}</h3>

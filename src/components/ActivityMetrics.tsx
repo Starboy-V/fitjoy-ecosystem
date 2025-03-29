@@ -13,7 +13,7 @@ const ActivityMetrics = () => {
         target="10,000" 
         icon={<Activity />} 
         progress={78} 
-        color="bg-starGold"
+        color="text-starGold"
       />
       
       <MetricCard 
@@ -22,7 +22,7 @@ const ActivityMetrics = () => {
         target="60" 
         icon={<Clock />} 
         progress={72} 
-        color="bg-starSilver"
+        color="text-starSilver"
       />
       
       <MetricCard 
@@ -31,7 +31,7 @@ const ActivityMetrics = () => {
         target="75" 
         icon={<Heart />} 
         progress={43} 
-        color="bg-red-500"
+        color="text-red-500"
       />
     </div>
   );

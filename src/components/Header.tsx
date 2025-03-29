@@ -24,7 +24,7 @@ const Header = () => {
           <Link to="/" className="flex items-center">
             <div className="w-10 h-10 flex items-center justify-center">
               <img 
-                src="/lovable-uploads/6932d159-1ea7-4799-b940-a3b75455ec24.png" 
+                src="/lovable-uploads/1112ded8-c1e7-41ad-931b-965192dffb23.png" 
                 alt="Starfit Phoenix Logo" 
                 className="h-8 w-auto"
               />
