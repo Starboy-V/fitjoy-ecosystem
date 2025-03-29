@@ -8,7 +8,7 @@ import InfluencerContent from '@/components/InfluencerContent';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { User, Settings, Plus, Chart } from 'lucide-react';
+import { User, Settings, Plus, BarChart } from 'lucide-react';
 
 const Dashboard = () => {
   return (
@@ -59,7 +59,7 @@ const Dashboard = () => {
                 <div className="flex justify-between items-center">
                   <CardTitle className="text-lg font-medium">Weekly Progress</CardTitle>
                   <Button variant="ghost" className="h-8 text-xs">
-                    <Chart className="h-4 w-4 mr-1" />
+                    <BarChart className="h-4 w-4 mr-1" />
                     Detailed Analytics
                   </Button>
                 </div>
