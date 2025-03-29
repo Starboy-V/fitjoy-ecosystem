@@ -65,7 +65,10 @@ const MetricCard = ({ title, value, target, icon, progress, color }: MetricCardP
           <div className="text-2xl font-bold">{value}</div>
           <div className="text-sm text-gray-500">Goal: {target}</div>
           <div className="mt-2">
-            <Progress value={progress} className={`h-2 ${color}`} />
+            <Progress 
+              value={progress} 
+              className={`h-2 ${color}`} 
+            />
           </div>
         </div>
       </CardContent>
