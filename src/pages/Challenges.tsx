@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -316,7 +315,11 @@ const ChallengeCard = ({
             <span className="text-gray-400">Progress</span>
             <span className="text-starLight">{progress}%</span>
           </div>
-          <Progress value={progress} className="h-2 bg-starAccent" indicatorClassName="bg-starGold" />
+          <Progress 
+            value={progress} 
+            className="h-2 bg-starAccent" 
+            indicatorClassName="bg-starGold" 
+          />
         </div>
         
         <div className="flex justify-between items-center">
