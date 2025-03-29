@@ -13,7 +13,7 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
+    <header className="sticky top-0 z-50 bg-starDark border-b border-starGray">
       <div className="container mx-auto flex justify-between items-center h-16 px-4">
         <div className="flex items-center space-x-2">
           {isMobile && (
@@ -22,15 +22,19 @@ const Header = () => {
             </Button>
           )}
           <Link to="/" className="flex items-center">
-            <div className="fit-gradient w-8 h-8 rounded-lg flex items-center justify-center">
-              <span className="font-bold text-white text-lg">FJ</span>
+            <div className="w-10 h-10 flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/6932d159-1ea7-4799-b940-a3b75455ec24.png" 
+                alt="Starfit Phoenix Logo" 
+                className="h-8 w-auto"
+              />
             </div>
-            <span className="ml-2 font-bold text-xl hidden sm:inline-block">FitJourney</span>
+            <span className="ml-2 font-bold text-xl tracking-wider text-starLight">STARFIT</span>
           </Link>
         </div>
 
         <nav className={`
-          ${isMobile ? 'absolute top-16 left-0 right-0 bg-white border-b border-gray-200 shadow-lg' : 'flex items-center space-x-8'}
+          ${isMobile ? 'absolute top-16 left-0 right-0 bg-starDark border-b border-starGray shadow-lg' : 'flex items-center space-x-8'}
           ${isMobile && !isMenuOpen ? 'hidden' : 'flex'}
           ${isMobile ? 'flex-col items-start p-4 space-y-4' : ''}
         `}>
@@ -43,11 +47,11 @@ const Header = () => {
         <div className="flex items-center space-x-1 sm:space-x-3">
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="h-5 w-5" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-fitPurple rounded-full"></span>
+            <span className="absolute top-1 right-1 w-2 h-2 bg-starGold rounded-full"></span>
           </Button>
-          <Avatar className="h-8 w-8 border-2 border-fitPurple">
+          <Avatar className="h-8 w-8 border-2 border-starGold">
             <AvatarImage src="" />
-            <AvatarFallback className="bg-accent text-accent-foreground">
+            <AvatarFallback className="bg-starAccent text-starLight">
               <User className="h-4 w-4" />
             </AvatarFallback>
           </Avatar>
@@ -67,7 +71,7 @@ const NavLink: React.FC<NavLinkProps> = ({ to, label, onClick }) => (
   <Link
     to={to}
     onClick={onClick}
-    className="text-gray-600 hover:text-fitPurple font-medium transition-colors"
+    className="text-starLight hover:text-starGold font-medium transition-colors"
   >
     {label}
   </Link>

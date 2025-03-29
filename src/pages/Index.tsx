@@ -13,21 +13,21 @@ const Index = () => {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="py-16 px-4">
+        <section className="py-16 px-4 bg-starDark">
           <div className="container mx-auto max-w-6xl">
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-1/2 mb-8 md:mb-0">
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
-                  Transform Your Fitness Journey <span className="text-fitPurple">Get Rewarded</span>
+                <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4 text-starLight">
+                  Transform Your Fitness <span className="text-starGold">Elite Experience</span>
                 </h1>
-                <p className="text-xl text-gray-600 mb-6">
+                <p className="text-xl text-gray-400 mb-6">
                   Track your progress, earn rewards, and get personalized guidance from top fitness influencers.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="bg-fitPurple hover:bg-fitPurple/90">
+                  <Button size="lg" className="bg-starGold text-starDark hover:bg-starGold/90">
                     Get Started Free
                   </Button>
-                  <Button size="lg" variant="outline">
+                  <Button size="lg" variant="outline" className="border-starGray text-starLight hover:bg-starAccent">
                     Explore Features
                   </Button>
                 </div>
@@ -35,14 +35,14 @@ const Index = () => {
                 <div className="mt-8 flex items-center">
                   <div className="flex -space-x-3">
                     {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="w-10 h-10 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-bold">
+                      <div key={i} className="w-10 h-10 rounded-full bg-starAccent border-2 border-starDark flex items-center justify-center text-xs font-bold text-starLight">
                         {i}
                       </div>
                     ))}
                   </div>
                   <div className="ml-4">
-                    <p className="font-medium">20k+ active users</p>
-                    <div className="flex text-yellow-400">
+                    <p className="font-medium text-starLight">20k+ active users</p>
+                    <div className="flex text-starGold">
                       {[1, 2, 3, 4, 5].map((i) => (
                         <Star key={i} size={14} fill="currentColor" />
                       ))}
@@ -53,12 +53,12 @@ const Index = () => {
               
               <div className="md:w-1/2 md:pl-8">
                 <div className="relative">
-                  <div className="absolute -top-4 -left-4 w-full h-full bg-fitBlue rounded-2xl"></div>
-                  <div className="absolute -bottom-4 -right-4 w-full h-full bg-fitPurple rounded-2xl"></div>
-                  <div className="relative z-10 bg-white p-4 rounded-2xl shadow-xl">
+                  <div className="absolute -top-4 -left-4 w-full h-full bg-starGold rounded-2xl"></div>
+                  <div className="absolute -bottom-4 -right-4 w-full h-full bg-starGray rounded-2xl"></div>
+                  <div className="relative z-10 bg-starDark p-4 rounded-2xl shadow-xl border border-starGray">
                     <img
                       src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Zml0bmVzcyUyMGFwcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-                      alt="FitJourney App"
+                      alt="STARFIT App"
                       className="w-full h-auto rounded-xl"
                     />
                   </div>
@@ -69,28 +69,28 @@ const Index = () => {
         </section>
         
         {/* Features Section */}
-        <section className="py-16 px-4 bg-gray-50">
+        <section className="py-16 px-4 bg-starAccent">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Why Choose FitJourney?</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our comprehensive ecosystem empowers your fitness journey with cutting-edge features
+              <h2 className="text-3xl font-bold mb-4 text-starLight">Why Choose <span className="text-starGold">STARFIT</span>?</h2>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                Our premium ecosystem empowers your fitness journey with cutting-edge features
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <FeatureCard
-                icon={<Activity size={24} className="text-fitBlue" />}
+                icon={<Activity size={24} className="text-starGold" />}
                 title="Activity Tracking"
                 description="Automatically track steps, workouts, and daily activities to measure your progress."
               />
               <FeatureCard
-                icon={<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQwIDgwQzYyLjA5MTQgODAgODAgNjIuMDkxNCA4MCA0MEM4MCAxNy45MDg2IDYyLjA5MTQgMCA0MCAwQzE3LjkwODYgMCAwIDE3LjkwODYgMCA0MEMwIDYyLjA5MTQgMTcuOTA4NiA4MCA0MCA4MFoiIGZpbGw9IiM4QjVDRjYiLz4KPHBhdGggZD0iTTI3LjUgNTdDMjYuMTIgNTcgMjUgNTUuODggMjUgNTQuNVYyNS41QzI1IDI0LjEyIDI2LjEyIDIzIDI3LjUgMjNINTIuNUM1My44OCAyMyA1NSAyNC4xMiA1NSAyNS41VjU0LjVDNTUgNTUuODggNTMuODggNTcgNTIuNSA1N0gyNy41Wk0zMCAyNy41VjUyLjVINTBWMjcuNUgzMFpNMzIuNSA1MEMzMi41IDQ5LjE3IDMzLjE3IDQ4LjUgMzQgNDguNUg0NkM0Ni44MyA0OC41IDQ3LjUgNDkuMTcgNDcuNSA1MEM0Ny41IDUwLjgzIDQ2LjgzIDUxLjUgNDYgNTEuNUgzNEMzMy4xNyA1MS41IDMyLjUgNTAuODMgMzIuNSA1MFpNMzQuNSA0MFYzMEg0NS41VjQwSDM0LjVaIiBmaWxsPSIjRkZGIi8+Cjwvc3ZnPg==" alt="SweatCoin" className="w-6 h-6" />}
+                icon={<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQwIDgwQzYyLjA5MTQgODAgODAgNjIuMDkxNCA4MCA0MEw4MCAxNy45MDg2IDYyLjA5MTQgMCAxNy45MDg2IDAgMCAxNy45MDg2IDAgNDBDMCA2Mi4wOTE0IDE3LjkwODYgODAgNDAgODBaIiBmaWxsPSIjRDRBRjM3Ii8+CjxwYXRoIGQ9Ik0yNy41IDU3QzI2LjEyIDU3IDI1IDU1Ljg4IDI1IDU0LjVWMjUuNUMyNSAyNC4xMiAyNi4xMiAyMyAyNy41IDIzSDUyLjVDNTMuODggMjMgNTUgMjQuMTIgNTUgMjUuNVY1NC41QzU1IDU1Ljg4IDUzLjg4IDU3IDUyLjUgNTdIMjcuNVpNMzAgMjcuNVY1Mi41SDUwVjI3LjVIMzBaTTMyLjUgNTBDMzIuNSA0OS4xNyAzMy4xNyA0OC41IDM0IDQ4LjVINDZDNDYuODMgNDguNSA0Ny41IDQ5LjE3IDQ3LjUgNTBDNDcuNSA1MC44MyA0Ni44MyA1MS41IDQ2IDUxLjVIMzRDMzMuMTcgNTEuNSAzMi41IDUwLjgzIDMyLjUgNTBaTTM0LjUgNDBWMzBINDUuNVY0MEgzNC41WiIgZmlsbD0iIzFBMUExQSIvPgo8L3N2Zz4=" alt="SweatCoin" className="w-6 h-6" />}
                 title="Earn SweatCoins"
                 description="Get rewarded for your physical activity with SweatCoin integration."
               />
               <FeatureCard
-                icon={<Heart size={24} className="text-fitPurple" />}
+                icon={<Heart size={24} className="text-starGold" />}
                 title="Expert Guidance"
                 description="Access workouts and nutrition advice from top fitness influencers."
               />
@@ -99,15 +99,15 @@ const Index = () => {
         </section>
         
         {/* Call to Action */}
-        <section className="py-16 px-4">
+        <section className="py-16 px-4 bg-starDark">
           <div className="container mx-auto max-w-6xl">
-            <div className="fit-gradient rounded-2xl p-8 md:p-12 text-white">
+            <div className="starfit-gradient rounded-2xl p-8 md:p-12 text-white border border-starGray">
               <div className="max-w-2xl">
-                <h2 className="text-3xl font-bold mb-4">Ready to Start Your FitJourney?</h2>
-                <p className="text-xl mb-6 text-white/90">
+                <h2 className="text-3xl font-bold mb-4">Ready to Start Your <span className="text-starGold">STARFIT</span> Journey?</h2>
+                <p className="text-xl mb-6 text-gray-300">
                   Join thousands of users transforming their fitness habits and earning rewards.
                 </p>
-                <Button size="lg" variant="secondary" className="bg-white text-fitPurple hover:bg-gray-100">
+                <Button size="lg" variant="outline" className="bg-starGold text-starDark hover:bg-starGold/90 border-none">
                   Get Started Now <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </div>
@@ -132,12 +132,12 @@ type FeatureCardProps = {
 
 const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
   return (
-    <div className="fit-card p-6">
-      <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+    <div className="bg-starDark p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-starGray">
+      <div className="w-12 h-12 rounded-full bg-starAccent flex items-center justify-center mb-4">
         {icon}
       </div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <h3 className="text-xl font-bold mb-2 text-starLight">{title}</h3>
+      <p className="text-gray-400">{description}</p>
     </div>
   );
 };

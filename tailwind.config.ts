@@ -63,13 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// FitJourney Custom Colors
-				fitBlue: '#0EA5E9',
-				fitPurple: '#8B5CF6',
-				fitDark: '#1A1F2C',
-				fitLight: '#F1F0FB',
-				fitGray: '#8E9196',
-				fitGreen: '#4ADE80',
+				// Starfit Custom Colors
+				starGold: '#D4AF37',
+				starSilver: '#C0C0C0',
+				starDark: '#1A1A1A',
+				starLight: '#FFFFFF',
+				starGray: '#444444',
+				starAccent: '#333333',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -13,7 +13,7 @@ const ActivityMetrics = () => {
         target="10,000" 
         icon={<Activity />} 
         progress={78} 
-        color="bg-fitBlue"
+        color="bg-starGold"
       />
       
       <MetricCard 
@@ -22,7 +22,7 @@ const ActivityMetrics = () => {
         target="60" 
         icon={<Clock />} 
         progress={72} 
-        color="bg-fitPurple"
+        color="bg-starSilver"
       />
       
       <MetricCard 
@@ -48,11 +48,11 @@ type MetricCardProps = {
 
 const MetricCard = ({ title, value, target, icon, progress, color }: MetricCardProps) => {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden border border-starGray">
       <CardHeader className="pb-2">
         <CardTitle className="flex justify-between items-center text-base font-medium">
           <span>{title}</span>
-          <span className={`p-2 rounded-full bg-gray-100`}>
+          <span className={`p-2 rounded-full bg-starAccent`}>
             {React.cloneElement(icon as React.ReactElement, { 
               className: 'h-4 w-4',
               strokeWidth: 2 
