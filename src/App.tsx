@@ -11,6 +11,7 @@ import Explore from "./pages/Explore";
 import Nutrition from "./pages/Nutrition";
 import Challenges from "./pages/Challenges";
 import StarAI from "./pages/StarAI";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import { supabase } from "./integrations/supabase/client";
 
@@ -22,7 +23,14 @@ supabase.auth.onAuthStateChange((event, session) => {
   }
 });
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -33,14 +41,12 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Navigate to="/" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/auth" element={<Navigate to="/dashboard" replace />} />
             <Route path="/explore" element={<Explore />} />
             <Route path="/nutrition" element={<Nutrition />} />
             <Route path="/challenges" element={<Challenges />} />
             <Route path="/star-ai" element={<StarAI />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
