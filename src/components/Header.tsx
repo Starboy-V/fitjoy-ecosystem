@@ -1,16 +1,36 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X, User, Bell, Settings } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Menu, X, User, Bell, Settings, Home, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useAuth } from '@/contexts/AuthContext';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { toast } from "sonner";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { user, signOut, userProfile } = useAuth();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  
+  const handleSignOut = async () => {
+    const { error } = await signOut();
+    if (error) {
+      toast("Error signing out. Please try again.");
+    } else {
+      navigate('/');
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-starDark border-b border-starGray">
@@ -38,10 +58,12 @@ const Header = () => {
           ${isMobile && !isMenuOpen ? 'hidden' : 'flex'}
           ${isMobile ? 'flex-col items-start p-4 space-y-4' : ''}
         `}>
+          <NavLink to="/" label="Home" icon={<Home className="h-4 w-4 mr-2" />} onClick={() => isMobile && setIsMenuOpen(false)} />
           <NavLink to="/dashboard" label="Dashboard" onClick={() => isMobile && setIsMenuOpen(false)} />
           <NavLink to="/explore" label="Explore" onClick={() => isMobile && setIsMenuOpen(false)} />
           <NavLink to="/nutrition" label="Nutrition" onClick={() => isMobile && setIsMenuOpen(false)} />
           <NavLink to="/challenges" label="Challenges" onClick={() => isMobile && setIsMenuOpen(false)} />
+          <NavLink to="/star-ai" label="Star AI" onClick={() => isMobile && setIsMenuOpen(false)} />
         </nav>
 
         <div className="flex items-center space-x-1 sm:space-x-3">
@@ -49,12 +71,49 @@ const Header = () => {
             <Bell className="h-5 w-5" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-starGold rounded-full"></span>
           </Button>
-          <Avatar className="h-8 w-8 border-2 border-starGold">
-            <AvatarImage src="" />
-            <AvatarFallback className="bg-starAccent text-starLight">
-              <User className="h-4 w-4" />
-            </AvatarFallback>
-          </Avatar>
+          
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar className="h-8 w-8 border-2 border-starGold cursor-pointer">
+                  <AvatarImage src={userProfile?.avatar_url || ""} />
+                  <AvatarFallback className="bg-starAccent text-starLight">
+                    {userProfile?.username?.charAt(0).toUpperCase() || <User className="h-4 w-4" />}
+                  </AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56 bg-[#1A1A1A] border-starGray text-starLight" align="end">
+                <div className="flex items-center justify-start p-2">
+                  <div className="ml-2 space-y-1">
+                    <p className="text-sm font-medium">{userProfile?.username || "User"}</p>
+                    <p className="text-xs text-gray-400">{user.email}</p>
+                  </div>
+                </div>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/dashboard" className="cursor-pointer flex items-center">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Dashboard</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/settings" className="cursor-pointer flex items-center">
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Settings</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-red-500 focus:text-red-500">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button variant="ghost" size="sm" className="text-starGold" asChild>
+              <Link to="/dashboard">Sign In</Link>
+            </Button>
+          )}
         </div>
       </div>
     </header>
@@ -64,15 +123,17 @@ const Header = () => {
 type NavLinkProps = {
   to: string;
   label: string;
+  icon?: React.ReactNode;
   onClick?: () => void;
 };
 
-const NavLink: React.FC<NavLinkProps> = ({ to, label, onClick }) => (
+const NavLink: React.FC<NavLinkProps> = ({ to, label, icon, onClick }) => (
   <Link
     to={to}
     onClick={onClick}
-    className="text-starLight hover:text-starGold font-medium transition-colors"
+    className="text-starLight hover:text-starGold font-medium transition-colors flex items-center"
   >
+    {icon}
     {label}
   </Link>
 );

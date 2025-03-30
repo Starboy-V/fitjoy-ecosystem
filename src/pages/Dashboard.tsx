@@ -1,5 +1,6 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ActivityMetrics from '@/components/ActivityMetrics';
@@ -9,8 +10,48 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { User, Settings, BarChart, Compass, Utensils, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { useToast } from '@/components/ui/use-toast';
 
 const Dashboard = () => {
+  const { user, userProfile, loading } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Protect this route - redirect to auth if not logged in
+    if (!loading && !user) {
+      toast({
+        title: "Authentication required",
+        description: "Please sign in to view your dashboard",
+        variant: "destructive"
+      });
+      navigate('/auth');
+    } else {
+      // Set loading to false when auth check is complete
+      setIsLoading(false);
+    }
+  }, [user, loading, navigate, toast]);
+
+  // If still loading or redirecting, show minimal content
+  if (loading || isLoading) {
+    return (
+      <div className="flex flex-col min-h-screen bg-starDark">
+        <Header />
+        <main className="flex-grow container mx-auto px-4 py-6 flex items-center justify-center">
+          <div className="text-starLight">Loading dashboard...</div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  // If no user after loading completed, redirect happens in useEffect
+  if (!user) return null;
+
+  const username = userProfile?.username || user?.email?.split('@')[0] || "User";
+
   return (
     <div className="flex flex-col min-h-screen bg-starDark">
       <Header />
@@ -19,13 +60,13 @@ const Dashboard = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
           <div className="flex items-center">
             <Avatar className="h-12 w-12 border-2 border-starGold mr-3">
-              <AvatarImage src="" />
+              <AvatarImage src={userProfile?.avatar_url || ""} />
               <AvatarFallback className="bg-starDark text-starGold">
                 <User className="h-6 w-6" />
               </AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-2xl font-bold text-starLight">Welcome back, Alex!</h1>
+              <h1 className="text-2xl font-bold text-starLight">Welcome back, {username}!</h1>
               <p className="text-gray-400">Let's check your progress today</p>
             </div>
           </div>
