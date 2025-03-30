@@ -16,7 +16,7 @@ import { useEffect } from "react";
 import { supabase } from "./integrations/supabase/client";
 
 // Configure Supabase client explicitly for better auth handling
-supabase.auth.setAutoRefreshToken(true);
+// Note: setAutoRefreshToken was removed in newer versions, it's now configured through client options
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === 'TOKEN_REFRESHED') {
     // Token was refreshed
