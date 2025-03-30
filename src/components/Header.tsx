@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Menu, X, User, Bell, Settings, Home, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -19,7 +19,6 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useIsMobile();
   const { user, signOut, userProfile } = useAuth();
-  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
@@ -27,8 +26,6 @@ const Header = () => {
     const { error } = await signOut();
     if (error) {
       toast("Error signing out. Please try again.");
-    } else {
-      navigate('/');
     }
   };
 
@@ -63,7 +60,6 @@ const Header = () => {
           <NavLink to="/explore" label="Explore" onClick={() => isMobile && setIsMenuOpen(false)} />
           <NavLink to="/nutrition" label="Nutrition" onClick={() => isMobile && setIsMenuOpen(false)} />
           <NavLink to="/challenges" label="Challenges" onClick={() => isMobile && setIsMenuOpen(false)} />
-          <NavLink to="/star-ai" label="Star AI" onClick={() => isMobile && setIsMenuOpen(false)} />
         </nav>
 
         <div className="flex items-center space-x-1 sm:space-x-3">
@@ -93,7 +89,7 @@ const Header = () => {
                 <DropdownMenuItem asChild>
                   <Link to="/dashboard" className="cursor-pointer flex items-center">
                     <User className="mr-2 h-4 w-4" />
-                    <span>Dashboard</span>
+                    <span>Profile</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
@@ -111,7 +107,7 @@ const Header = () => {
             </DropdownMenu>
           ) : (
             <Button variant="ghost" size="sm" className="text-starGold" asChild>
-              <Link to="/dashboard">Sign In</Link>
+              <Link to="/auth">Sign In</Link>
             </Button>
           )}
         </div>
