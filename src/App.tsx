@@ -10,13 +10,11 @@ import Dashboard from "./pages/Dashboard";
 import Explore from "./pages/Explore";
 import Nutrition from "./pages/Nutrition";
 import Challenges from "./pages/Challenges";
-import Auth from "./pages/Auth";
+import StarAI from "./pages/StarAI";
 import NotFound from "./pages/NotFound";
-import { useEffect } from "react";
 import { supabase } from "./integrations/supabase/client";
 
 // Configure Supabase client explicitly for better auth handling
-// Note: setAutoRefreshToken was removed in newer versions, it's now configured through client options
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === 'TOKEN_REFRESHED') {
     // Token was refreshed
@@ -37,10 +35,11 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/auth" element={<Navigate to="/dashboard" replace />} />
             <Route path="/explore" element={<Explore />} />
             <Route path="/nutrition" element={<Nutrition />} />
             <Route path="/challenges" element={<Challenges />} />
-            <Route path="/auth" element={<Auth />} />
+            <Route path="/star-ai" element={<StarAI />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

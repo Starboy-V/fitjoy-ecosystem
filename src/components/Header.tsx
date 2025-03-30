@@ -63,6 +63,7 @@ const Header = () => {
           <NavLink to="/explore" label="Explore" onClick={() => isMobile && setIsMenuOpen(false)} />
           <NavLink to="/nutrition" label="Nutrition" onClick={() => isMobile && setIsMenuOpen(false)} />
           <NavLink to="/challenges" label="Challenges" onClick={() => isMobile && setIsMenuOpen(false)} />
+          <NavLink to="/star-ai" label="Star AI" onClick={() => isMobile && setIsMenuOpen(false)} />
         </nav>
 
         <div className="flex items-center space-x-1 sm:space-x-3">
@@ -110,7 +111,7 @@ const Header = () => {
             </DropdownMenu>
           ) : (
             <Button variant="ghost" size="sm" className="text-starGold" asChild>
-              <Link to="/auth">Sign In</Link>
+              <Link to="/dashboard">Sign In</Link>
             </Button>
           )}
         </div>
