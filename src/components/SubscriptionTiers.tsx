@@ -121,7 +121,13 @@ const SubscriptionTiers = () => {
         });
         
         setSubscriptionTiers(updatedTiers);
-        toast("Promo code applied successfully!");
+        
+        // Special message for STAR promo code
+        if (validatedPromoCode.code === "STAR") {
+          toast(`STAR promo code applied! $8.99 off your subscription.`);
+        } else {
+          toast("Promo code applied successfully!");
+        }
       } else {
         toast("Invalid or expired promo code");
       }
@@ -179,9 +185,11 @@ const SubscriptionTiers = () => {
         {activePromoCode && (
           <div className="mt-2 text-starGold text-sm">
             Promo code {activePromoCode.code} applied! 
-            {activePromoCode.is_percentage 
-              ? ` (${activePromoCode.discount_amount}% discount)` 
-              : ` ($${activePromoCode.discount_amount} discount)`}
+            {activePromoCode.code === "STAR" 
+              ? ` ($8.99 discount)` 
+              : activePromoCode.is_percentage 
+                ? ` (${activePromoCode.discount_amount}% discount)` 
+                : ` ($${activePromoCode.discount_amount} discount)`}
           </div>
         )}
       </div>

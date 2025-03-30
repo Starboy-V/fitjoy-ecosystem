@@ -13,6 +13,20 @@ export interface PromoCode {
 
 export const validatePromoCode = async (code: string): Promise<PromoCode | null> => {
   try {
+    // For the specific "STAR" promo code, return a hardcoded response
+    if (code === "STAR") {
+      return {
+        id: "star-promo",
+        code: "STAR",
+        discount_amount: 8.99,
+        is_percentage: false,
+        active: true,
+        created_at: new Date().toISOString(),
+        expires_at: null
+      };
+    }
+    
+    // For all other codes, check against the database
     const { data, error } = await supabase
       .from("promocodes")
       .select("*")

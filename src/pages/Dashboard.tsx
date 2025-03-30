@@ -47,6 +47,9 @@ const Dashboard = () => {
     );
   }
 
+  // If no user after loading completed, redirect happens in useEffect
+  if (!user) return null;
+
   const username = userProfile?.username || user?.email?.split('@')[0] || "User";
 
   return (
